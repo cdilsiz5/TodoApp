@@ -36,9 +36,18 @@ cd TodoApp
  Build the project using Maven
 
 ```bash
-mvn clean package
+mvn clean install
 ```
-### 2. Run the Test Suite
+### 2. Run the Todo App Application with Maven
+
+To run the Todo App , use the following command:
+
+Run Todo App
+```bash
+mvn spring-boot:run
+```
+
+### 3. Run the Test Suite with Maven
 
 To run the unit tests in the project, use the following command:
 
@@ -47,7 +56,7 @@ Run all unit tests
 mvn test
 ```
 
-### 3. Build Docker Image
+### 4. Build Docker Image
 To containerize the project using Docker, you can build a Docker image with the following command:
 
 Build the Docker image
@@ -57,7 +66,7 @@ docker build -t cihandsz/todo-app:latest .
 This will create a Docker image of your project locally.
 
 
-### 4. Push Docker Image to Docker Hub
+### 5. Push Docker Image to Docker Hub
 Log in to Docker Hub and push the image:
 
 Log in to Docker Hub
@@ -71,7 +80,7 @@ docker push cihandsz/todo-app:latest
 ```         
 After this step, your image will be available on Docker Hub.
 
-### 5. Start the Docker Container
+### 6. Start the Docker Container
 To run the Docker container for your application, use the following command:
 
  Run the Docker container
@@ -80,7 +89,7 @@ docker run -p 8080:8080 cihandsz/todo-app:latest
 ```
 This will start the application on port 8080.
 
-### 6. Docker Compose Setup
+### 7. Docker Compose Setup
 
 Then, start the application and its dependencies using:
  
@@ -94,7 +103,7 @@ docker-compose up --build
 ```
 This will build and start the application within a Docker container, and map it to port 8080 on your local machine.
 
-### 7. Access the Application
+### 8. Access the Application
 Once the application is up and running, you can access it at:
 
 http://localhost:8080
