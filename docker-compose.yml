@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  todo-app-service:
+    build:
+      context: .
+    container_name: todo-app-container
+    ports:
+      - "8080:8080"
+    networks:
+      - todo-app-network
+
+networks:
+  todo-app-network:
+    driver: bridge

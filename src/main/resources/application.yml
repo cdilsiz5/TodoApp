@@ -1,0 +1,31 @@
+openapi:
+  title: Appcent
+  description: To do App
+  version: v1.0
+  license:
+    name: Apache 2.0
+    url: http://springdoc.org
+
+security:
+  secret: 5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
+
+spring:
+  application:
+    name: TodoApp
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+  api-url: https://example.com/api
+
+cors:
+  allowedOrigins: http://localhost:3000
+  allowedMethods: GET, POST, PUT, DELETE, OPTIONS
+  allowedHeaders: "*"
+
