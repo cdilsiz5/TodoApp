@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
@@ -15,6 +16,6 @@ public class UpdateTodoRequest {
     private String description;
     private String status;
     private String priority;
-    private LocalDateTime dueDate;
+    private LocalDate dueDate;
     private boolean completed;
 }

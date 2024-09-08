@@ -9,6 +9,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -31,7 +32,7 @@ public class TodoItem extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private PriorityLevel priority;
 
-    private LocalDateTime dueDate;
+    private LocalDate dueDate;
     @Builder.Default
     private boolean completed=false;
 

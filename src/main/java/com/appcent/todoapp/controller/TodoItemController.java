@@ -39,11 +39,10 @@ public class TodoItemController {
                     content = @Content(
                             schema = @Schema(implementation = TodoItemDto.class),
                             mediaType = "application/json")))
-    @PostMapping("/create")
+    @PostMapping("/create/{listId}")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<TodoItemDto> createTodoItem(
-            @RequestParam Long listId,
-            @RequestBody @Valid CreateTodoRequest todoRequest) {
+            @PathVariable Long listId, @RequestBody @Valid CreateTodoRequest todoRequest) {
         TodoItemDto createdTodoItem = todoItemService.createTodo(listId, todoRequest);
         return new ResponseEntity<>(createdTodoItem, HttpStatus.CREATED);
     }
