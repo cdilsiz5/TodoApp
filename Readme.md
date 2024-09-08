@@ -1,10 +1,15 @@
-# TodoApp - Spring Boot Todo Application
+# TodoApp - Full Stack Todo Application (Spring Boot & React)
 
 ## Project Information
 
-This project is a **Todo** application developed using **Spring Boot** as the backend. 
+This **TodoApp** is a full-stack application where both the **backend (Spring Boot)** and **frontend (React)** run within the same JAR file. The application is accessible directly via **http://localhost:8080**, and the React frontend is served by the Spring Boot backend.
+
+ **Maven** is used for managing both backend and frontend builds. The Maven **frontend-maven-plugin** is configured to automatically handle the frontend build (using `npm run build`) during the Maven build process. This ensures that every time you run a Maven build (`mvn clean install`), it also triggers the frontend build process, making the latest frontend code ready to be served with the backend.
+
+With this setup, there's no need to run the frontend and backend separately – everything is packaged and runs seamlessly together in one application.
 
 ### Technologies and Tools Used:
+#### Backend (Spring Boot):
 - **Java 19**: For application development.
 - **Spring Boot 3.2.5**: For fast and easy backend development.
 - **JWT (JSON Web Token)**: Used for user authentication and authorization.
@@ -16,6 +21,11 @@ This project is a **Todo** application developed using **Spring Boot** as the ba
 - **JUnit 5 & Mockito**: For writing unit tests and mocking.
 - **Swagger (OpenAPI)**: For API documentation.
 
+#### Frontend (React):
+- **React**: For building the user interface.
+- **React** Bootstrap: For responsive, user-friendly UI components.
+- **Axios**: For handling HTTP requests between React and the Spring Boot API.
+- **JWT Handling**: For secure communication between frontend and backend.
 ## Setup and Run Instructions
 
 Follow these steps to build and run the project successfully.
@@ -107,8 +117,9 @@ Once the application is up and running, you can access it at:
 
 http://localhost:8080
 
- You can also view the Swagger API Documentation at:
+ Swagger API Documentation at:
 
 http://localhost:8080/swagger-ui.html
+
 
  

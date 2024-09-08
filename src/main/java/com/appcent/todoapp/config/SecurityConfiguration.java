@@ -38,7 +38,7 @@ public class SecurityConfiguration {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/home", "/signin", "/signup", "/static/**", "/index.html", "/favicon.ico").permitAll()
+                        .requestMatchers("/", "/home", "/signin", "/signup", "/static/**", "/index.html", "/favicon.ico", "/userpage","/manifest.json", "/todo-list/**").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers("/api/v1/appcent/auth/**").permitAll()
                         .requestMatchers("/api/v1/appcent/users/signup").permitAll()

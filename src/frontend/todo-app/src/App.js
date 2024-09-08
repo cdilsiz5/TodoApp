@@ -7,6 +7,7 @@ import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UserPage from "./pages/UserPage";
+import TodoItemPage from "./pages/TodoItemPage";
 
 class App extends React.Component {
     render() {
@@ -18,6 +19,7 @@ class App extends React.Component {
                     <Route path="/signin" element={<SignIn />} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/userpage" element={<UserPage />} />
+                    <Route path="/todo-list/:listId/items" element={<TodoItemPage />} />
 
                 </Routes>
             </div>

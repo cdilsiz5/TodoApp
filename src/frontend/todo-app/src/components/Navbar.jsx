@@ -32,9 +32,9 @@ const NavigationBar = ({ name, userId, surname, mail, isLoggedIn, onLogoutSucces
                         </>
                     ) : (
                         <>
-                            <Nav.Link href="/userpage">
+                            <Nav.Item href="/userpage">
                                 {`${name} ${surname} (${mail})`}
-                            </Nav.Link>
+                            </Nav.Item>
                             <Button variant="outline-light" onClick={handleLogout} className="ml-2">
                                 Logout
                             </Button>

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Form, Button, Alert, Container, Row, Col, Modal } from "react-bootstrap";
 import { signup } from "../api/ApiCalls";
 import NavigationBar from "./Navbar";
+import { useNavigate } from "react-router-dom";
+
 
 const SignUp = () => {
     const [form, setForm] = useState({
@@ -12,7 +14,7 @@ const SignUp = () => {
         passwordRepeat: "",
         userRole: "ROLE_USER",
     });
-
+    const navigate = useNavigate();
     const [errors, setErrors] = useState({});
     const [success, setSuccess] = useState(false);
     const [showModal, setShowModal] = useState(false); // State to control modal visibility
@@ -44,19 +46,24 @@ const SignUp = () => {
 
         try {
             const response = await signup(userData);
-            if (response.status === 201) {
-                setSuccess(true); // Show success message
-                setShowModal(true); // Show the modal popup on success
+            if (response.status === 201 || response.status === 200) {
+                setSuccess(true);
+                setShowModal(true);
+                setTimeout(() => {
+                    navigate("/signin");
+                }, 1500);
+
             }
         } catch (err) {
             if (err.response && err.response.data && err.response.data.validationErrors) {
-                setErrors(err.response.data.validationErrors); // Set validation errors if any
+                setErrors(err.response.data.validationErrors);
             } else {
                 console.error("An error occurred:", err);
                 setErrors({ general: "An error occurred. Please try again later." });
             }
         }
     };
+
 
     const { name: nameError, surname: surnameError, email: emailError, password: passwordError } = errors;
 

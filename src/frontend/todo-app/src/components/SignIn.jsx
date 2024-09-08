@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { loginHandler } from "../redux/AuthActions";
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import NavigationBar from "./Navbar";
 import Input from "./Input";
 
@@ -10,7 +10,7 @@ const SignIn = (props) => {
     const [userEmail, setUserEmail] = useState("");
     const [userPassword, setUserPassword] = useState("");
     const [error, setError] = useState("");
-    const [fieldErrors, setFieldErrors] = useState({}); // For individual field errors
+    const [fieldErrors, setFieldErrors] = useState({});
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
@@ -25,7 +25,7 @@ const SignIn = (props) => {
             .then((response) => {
                 setError("");
                 setFieldErrors({});
-                navigate("/userpage"); // Redirect to user page on successful login
+                navigate("/userpage");
             })
             .catch((err) => {
                 if (err.response && err.response.data && err.response.data.errors) {

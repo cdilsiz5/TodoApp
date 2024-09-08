@@ -1,4 +1,5 @@
 package com.appcent.todoapp.service;
+
 import com.appcent.todoapp.dto.TodoListDto;
 import com.appcent.todoapp.exception.TodoListNotFoundException;
 import com.appcent.todoapp.exception.UserNotFoundException;
@@ -64,6 +65,7 @@ class TodoListServiceImplTest {
         request.setTitle("Test");
 
         assertThrows(UserNotFoundException.class, () -> {
+            // Artık request param değil, path variable olarak 1L gönderiliyor
             todoListService.createTodoList(1L, request);
         });
 
@@ -97,6 +99,7 @@ class TodoListServiceImplTest {
         request.setTitle("Updated Title");
 
         assertThrows(TodoListNotFoundException.class, () -> {
+            // Artık request param değil, path variable olarak 1L gönderiliyor
             todoListService.updateTodoList(1L, request);
         });
 
@@ -126,6 +129,7 @@ class TodoListServiceImplTest {
         when(todoListRepository.existsById(anyLong())).thenReturn(false);
 
         assertThrows(TodoListNotFoundException.class, () -> {
+            // Artık request param değil, path variable olarak 1L gönderiliyor
             todoListService.deleteTodoList(1L);
         });
 
@@ -148,6 +152,7 @@ class TodoListServiceImplTest {
         when(todoListRepository.findById(anyLong())).thenReturn(Optional.empty());
 
         assertThrows(TodoListNotFoundException.class, () -> {
+            // Artık request param değil, path variable olarak 1L gönderiliyor
             todoListService.getTodoListById(1L);
         });
 

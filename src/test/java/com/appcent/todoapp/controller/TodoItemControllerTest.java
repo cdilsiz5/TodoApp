@@ -52,14 +52,14 @@ class TodoItemControllerTest {
         when(todoItemService.createTodo(anyLong(), any(CreateTodoRequest.class)))
                 .thenReturn(todoItemDto);
 
-        mockMvc.perform(post("/api/v1/appcent/todoitems/create")
-                        .param("listId", "1")
+        mockMvc.perform(post("/api/v1/appcent/todoitems/create/{listId}", 1L)  // listId path olarak gönderiliyor
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{ \"title\": \"Test TodoItem\", \"description\": \"Test Description\" }"))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.title").value("Test TodoItem"))
                 .andExpect(jsonPath("$.description").value("Test Description"));
     }
+
     @Test
     void testGetTodoItemById() throws Exception {
         TodoItemDto todoItemDto = TodoItemDto.builder()

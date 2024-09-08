@@ -3,12 +3,14 @@ import { getTodoListsByUserId, createTodoList } from '../api/ApiCalls';
 import { connect } from 'react-redux';
 import NavigationBar from "../components/Navbar";
 import { Button, Form, Modal, Table } from 'react-bootstrap';
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const UserPage = ({ userId }) => {
     const [todoLists, setTodoLists] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [showModal, setShowModal] = useState(false);
+    const navigate = useNavigate();
     const [newTodoList, setNewTodoList] = useState({
         title: '',
         description: ''
@@ -68,8 +70,7 @@ const UserPage = ({ userId }) => {
                     <p>{error}</p>
                 ) : (
                     <div>
-                        {/* Todo Lists Table */}
-                        <Table striped bordered hover className="mb-4">
+                         <Table striped bordered hover className="mb-4">
                             <thead>
                             <tr className="table-success">
                                 <th>ID</th>
@@ -92,7 +93,7 @@ const UserPage = ({ userId }) => {
                                         <td>
                                             <Button
                                                 variant="outline-success"
-                                                onClick={() => alert(`Fetching items for list: ${list.title}`)}
+                                                onClick={() => navigate(`/todo-list/${list.id}/items`)}
                                                 className="mr-2"
                                             >
                                                 View Items
@@ -104,15 +105,13 @@ const UserPage = ({ userId }) => {
                             </tbody>
                         </Table>
 
-                        {/* Button to create new todo list */}
-                        <Button variant="primary" onClick={handleShowModal}>
+                         <Button variant="primary" onClick={handleShowModal}>
                             Create New Todo List
                         </Button>
                     </div>
                 )}
 
-                {/* Modal for creating new Todo List */}
-                <Modal show={showModal} onHide={handleCloseModal}>
+                 <Modal show={showModal} onHide={handleCloseModal}>
                     <Modal.Header closeButton>
                         <Modal.Title>Create New Todo List</Modal.Title>
                     </Modal.Header>

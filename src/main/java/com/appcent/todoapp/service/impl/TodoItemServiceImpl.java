@@ -4,6 +4,8 @@ import com.appcent.todoapp.dto.TodoItemDto;
 import com.appcent.todoapp.exception.TodoItemNotFoundException;
 import com.appcent.todoapp.model.TodoItem;
 import com.appcent.todoapp.model.TodoList;
+import com.appcent.todoapp.model.enums.PriorityLevel;
+import com.appcent.todoapp.model.enums.TodoStatus;
 import com.appcent.todoapp.repository.TodoItemRepository;
 import com.appcent.todoapp.repository.TodoListRepository;
 import com.appcent.todoapp.request.CreateTodoRequest;
@@ -35,7 +37,20 @@ public class TodoItemServiceImpl implements TodoItemService {
                     return new RuntimeException("TodoList not found!");
                 });
 
-        TodoItem todoItem = TODO_ITEM_MAPPER.toTodoItem(request);
+        TodoItem todoItem = toTodoItem(request);
+        try {
+            todoItem.setPriority(PriorityLevel.valueOf(request.getPriority().toUpperCase()));
+        } catch (IllegalArgumentException e) {
+            log.error("Invalid priority level: {}", request.getPriority());
+            throw new RuntimeException("Invalid priority level: " + request.getPriority());
+        }
+
+        try {
+            todoItem.setStatus(TodoStatus.valueOf(request.getStatus().toUpperCase()));
+        } catch (IllegalArgumentException e) {
+            log.error("Invalid status: {}", request.getStatus());
+            throw new RuntimeException("Invalid status: " + request.getStatus());
+        }
         todoItem.setTodoList(todoList);
 
         TodoItem savedTodoItem = todoItemRepository.save(todoItem);
@@ -97,5 +112,11 @@ public class TodoItemServiceImpl implements TodoItemService {
 
         log.info("Fetched {} TodoItems for TodoList with ID: {}", todoItems.size(), listId);
         return TODO_ITEM_MAPPER.toTodoItemDtoList(todoItems);
+    }
+    private TodoItem toTodoItem(CreateTodoRequest request) {
+        TodoItem todoItem = new TodoItem();
+        todoItem.setTitle(request.getTitle());
+        todoItem.setDescription(request.getDescription());
+        return todoItem;
     }
 }

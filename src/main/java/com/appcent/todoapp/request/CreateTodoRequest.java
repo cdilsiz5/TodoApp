@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -16,7 +17,6 @@ public class CreateTodoRequest {
     private String description;
     private String status;
     private String priority;
-    private LocalDateTime dueDate;
-    private boolean completed;
+    private LocalDate dueDate;
 
 }

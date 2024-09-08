@@ -77,9 +77,10 @@ export const deleteTodoItem = (todoId) => {
 };
 
 // Create TodoItem API
-export const createTodoItem = (body) => {
-   return instance.post(`${API_TODO_URL}todoitems/create`, body);
+export const createTodoItem = (listId, body) => {
+   return instance.post(`${API_TODO_URL}todoitems/create/${listId}`, body);
 };
+
 
 // Get All TodoItems by List ID API
 export const getTodoItemsByListId = (listId) => {
