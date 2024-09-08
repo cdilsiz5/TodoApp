@@ -55,8 +55,15 @@ Run all unit tests
 ```bash
 mvn test
 ```
+### 4. Push Docker Image to Docker Hub
+Log in to Docker Hub and push the image:
 
-### 4. Build Docker Image
+Log in to Docker Hub
+```bash
+docker login
+```
+
+### 5. Build Docker Image
 To containerize the project using Docker, you can build a Docker image with the following command:
 
 Build the Docker image
@@ -65,14 +72,6 @@ docker build -t cihandsz/todo-app:latest .
 ```
 This will create a Docker image of your project locally.
 
-
-### 5. Push Docker Image to Docker Hub
-Log in to Docker Hub and push the image:
-
-Log in to Docker Hub
-```bash
-docker login
-```
 
 Push the Docker image
 ```bash

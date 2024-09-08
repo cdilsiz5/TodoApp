@@ -31,3 +31,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Ignore build directory for React frontend
+/src/frontend/todo-app/build/
+/src/frontend/todo-app/node_modules/
+/src/frontend/todo-app/.cache/
+/src/frontend/todo-app/.next/
+/src/frontend/todo-app/.nuxt/
+/src/frontend/todo-app/.expo/

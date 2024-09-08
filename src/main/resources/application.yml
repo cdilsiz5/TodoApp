@@ -10,6 +10,9 @@ security:
   secret: 5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
 
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   application:
     name: TodoApp
   datasource:
@@ -27,5 +30,5 @@ spring:
 cors:
   allowedOrigins: http://localhost:3000
   allowedMethods: GET, POST, PUT, DELETE, OPTIONS
-  allowedHeaders: "*"
+  allowedHeaders: Authorization, Content-Type, X-Requested-With, Accept
 
